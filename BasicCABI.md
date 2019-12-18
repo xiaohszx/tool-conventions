@@ -168,8 +168,8 @@ At the wasm C ABI level, the following symbol names are used:
 
 C ABI Symbol name            | C and C++ signature                |
 ---------------------------- | -----------------------------------|
-`main`                       | `int main(void)` or `int main()`   |
-`__main_argc_argv`           | `int main(int argc, char *argv[])` |
+`__main_void`                | `int main(void)` or `int main()`   |
+`main`                       | `int main(int argc, char *argv[])` |
 
 These symbol names only apply at the ABI level; C and C++ source should
 continue to use the standard `main` name, and compilers will handle the
@@ -178,7 +178,7 @@ details of conforming to the ABI.
 Also note that C symbol names are distinct from WebAssembly export
 names, which are outside the scope of the C ABI. Toolchains which export
 the user entrypoint may chose to export it as the name `main`, even when
-the C ABI symbol name is `__main_argc_argv`.
+the C ABI symbol name is `__main_void`.
 
 A symbol name other than `main` is needed because the usual trick of
 having implementations pass arguments to `main` even when they aren't
